@@ -4,7 +4,20 @@
 cp .bash_profile ~
 touch ~/.profile
 # system setting
+  # install xcode command line tools 
+osascript <<'END'
+	do shell script "xcode-select --install"
+	do shell script "sleep 1"
 
+	tell application "System Events"
+		tell process "Install Command Line Developer Tools"
+			keystroke return
+			click button "Agree" of window "License Agreement"
+		end tell
+	end tell
+END
+  # open allow all source 
+echo [your_password] | sudo -S spctl --master-disable
 # vim
 cp .vimrc ..
 vim +PluginInstall +qall
