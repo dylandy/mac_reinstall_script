@@ -18,6 +18,20 @@ osascript <<'END'
 END
   # open allow all source 
 echo [your_password] | sudo -S spctl --master-disable
+  # avoid creating .DS_Store files in USB and network
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+	# Disable hibernation (speeds up entering sleep mode)
+sudo pmset -a hibernatemode 0
+
+	# Remove the sleep image file to save disk space
+sudo rm /private/var/vm/sleepimage
+	# Create a zero-byte file instead…
+sudo touch /private/var/vm/sleepimage
+	# …and make sure it can’t be rewritten
+sudo chflags uchg /private/var/vm/sleepimage
+
 # vim
 cp .vimrc ..
 vim +PluginInstall +qall
