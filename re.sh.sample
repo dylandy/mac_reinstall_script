@@ -37,6 +37,7 @@ cp .vimrc ..
 vim +PluginInstall +qall
 # install homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew doctor
 # install application
   # install basic application
 brew install wget
@@ -47,6 +48,7 @@ brew install jq
 brew install gpg
 brew install mysql
 brew install redis
+brew install mongodb
 brew cask install iterm2
 brew cask install telegram
 brew cask install vlc
@@ -75,6 +77,8 @@ gem install mysql2
 npm install -g coffee-script
 npm install -g type-script
 npm install -g uglify-js
+npm install -g grunt-cli
+npm install -g bower
   # install science apps
 brew install R
 brew install pip3
@@ -86,3 +90,6 @@ pip3 install keras
   # install crystal
 brew install crystal-lang
 brew install crystal-icr
+
+# clean brew cache
+brew cleanup
